@@ -1,0 +1,27 @@
+services:
+
+  gateway:
+    
+    build:
+      context: ./gateway
+
+    ports:
+        - 8000:8000
+
+  user-service:
+
+    build:
+      context: ./user-service
+
+    ports:
+      - 8001:8001
+
+  
+  product-service:
+
+    build:
+      context: ./product-service
+
+    ports:
+      - 8002:8002
+
