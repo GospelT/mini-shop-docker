@@ -24,3 +24,20 @@ Make sure you have Docker and Docker Compose installed.
 ### 1. Start/stop all service 
 docker compose up --build
 docker compose down
+
+# Mini Shop Microservices - Testing Steps
+
+- Check running containers: Run: docker ps Ensure gateway, user-service, and product-service
+  are running.
+- Test user service directly: Run: curl http://localhost:8001/users Expected: [] or list of users.
+
+- Test product service directly: Run: curl http://localhost:8002/products Expected: [] or list of
+  products.
+
+- Test API Gateway: Run: curl http://localhost:8000/users Run: curl http://localhost:8000/products
+  Expected: same results as direct services.
+  
+- Check logs if something fails: Run: docker compose logs gateway Look for errors like
+  ENOTFOUND or ECONNREFUSED.
+
+- Verify Docker networking: Inside gateway container run: curl http://user-service:8001/users
